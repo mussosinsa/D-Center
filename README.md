@@ -20,7 +20,7 @@ Flamingo is a Big Data platform based on Apache Hadoop Ecosystem. It provides a 
 
 ### System Requirement
 
-* JDK 1.7 or higher
+* JDK 11 or higher
 * Apache Tomcat 7 or higher
 * Apache Hadoop 2.0 or higher
 * Apache Hive 0.13 or higher

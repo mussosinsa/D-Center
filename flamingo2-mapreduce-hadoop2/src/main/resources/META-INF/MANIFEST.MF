@@ -2,5 +2,5 @@ Manifest-Version: 1.0
 Archiver-Version: Plexus Archiver
 Created-By: Apache Maven
 Built-By: Cloudine
-Build-Jdk: 1.7.0
+Build-Jdk: 11
 Main-Class: org.openflamingo.mapreduce.etl.MapReduceDriver
