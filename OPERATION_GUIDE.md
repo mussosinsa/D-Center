@@ -130,6 +130,23 @@ storage.object.timeout=30000
 - `hybrid` 모드에서는 데이터 분류 정책(예: 대용량 원본=Object, 워크플로우 임시/메타=HDFS)을 명확히 문서화합니다.
 - 장애 전환 시나리오(예: Object 장애 시 HDFS fallback)를 사전 점검합니다.
 
+Collector / System-Agent 연동 설정(선택):
+
+```properties
+# collector hadoop.properties
+default.object.storage.enabled=true
+default.object.storage.provider=minio
+default.object.storage.endpoint=http://minio.example.com:9000
+default.object.storage.bucket=flamingo
+default.object.storage.timeout=30000
+
+# object storage agent endpoint (system-agent)
+default.object.agent.address=system-agent.example.com
+default.object.agent.port=10070
+```
+
+System-Agent는 `/remote/agent/objectstorage` 엔드포인트를 통해 Collector 요청에 응답합니다.
+
 ## 7) Tomcat 운영 권장값
 
 `setenv.sh` 예시:

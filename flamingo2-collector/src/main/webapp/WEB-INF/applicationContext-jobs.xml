@@ -51,4 +51,17 @@
         </bean>
     -->
 
+
+
+    <bean id="objectStorageJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail">
+            <bean class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+                <property name="jobClass" value="org.opencloudengine.flamingo2.collector.jobs.ObjectStorageUsageJob"/>
+            </bean>
+        </property>
+        <!-- 1H -->
+        <property name="repeatInterval" value="3600000"/>
+        <property name="startDelay" value="5000"/>
+    </bean>
+
 </beans>

@@ -68,6 +68,15 @@ public class ConfigurationHolder {
 
             engine.setHiveMetastoreAddress(props.getProperty(qualifier + ".hive.metastore.address"));
             engine.setHiveMetastorePort(Integer.parseInt(props.getProperty(qualifier + ".hive.metastore.port")));
+
+            engine.setObjectStorageEnabled(parseBoolean(props, qualifier + ".object.storage.enabled", false));
+            engine.setObjectStorageProvider(parseString(props, qualifier + ".object.storage.provider", "minio"));
+            engine.setObjectStorageEndpoint(parseString(props, qualifier + ".object.storage.endpoint", ""));
+            engine.setObjectStorageBucket(parseString(props, qualifier + ".object.storage.bucket", ""));
+            engine.setObjectStorageTimeout(parseInt(props, qualifier + ".object.storage.timeout", 30000));
+
+            engine.setObjectAgentAddress(parseString(props, qualifier + ".object.agent.address", engine.getNnAgentAddress()));
+            engine.setObjectAgentPort(parseInt(props, qualifier + ".object.agent.port", engine.getNnAgentPort()));
         }
 
     }
@@ -79,4 +88,26 @@ public class ConfigurationHolder {
     public static Map<String, SystemConfig> getConfigs() {
         return configs;
     }
+
+    private static String parseString(Properties props, String key, String defaultValue) {
+        String value = props.getProperty(key);
+        return value == null || value.trim().isEmpty() ? defaultValue : value;
+    }
+
+    private static int parseInt(Properties props, String key, int defaultValue) {
+        String value = props.getProperty(key);
+        if (value == null || value.trim().isEmpty()) return defaultValue;
+        try {
+            return Integer.parseInt(value);
+        } catch (Exception ex) {
+            return defaultValue;
+        }
+    }
+
+    private static boolean parseBoolean(Properties props, String key, boolean defaultValue) {
+        String value = props.getProperty(key);
+        if (value == null || value.trim().isEmpty()) return defaultValue;
+        return Boolean.parseBoolean(value);
+    }
+
 }

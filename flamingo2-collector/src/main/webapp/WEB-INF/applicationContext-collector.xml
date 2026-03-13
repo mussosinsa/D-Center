@@ -24,6 +24,7 @@
 				<ref bean="yarnApplicationTrigger"/>
 				<ref bean="mapReduceJobTrigger"/>
 				<ref bean="hdfsJobTrigger"/>
+                <ref bean="objectStorageJobTrigger"/>
                 <!--<ref bean="cldbJobTrigger"/>-->
             </list>
         </property>

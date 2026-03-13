@@ -28,4 +28,15 @@
 	<bean id="sigarProxy" class="org.opencloudengine.flamingo2.agent.system.SigarProxyFactory">
 		<property name="sigar" ref="sigar"/>
 	</bean>
+
+
+	<!-- ================ Object Storage Agent API ================ -->
+
+	<bean id="objectStorageAgentApi" class="org.opencloudengine.flamingo2.agent.objectstorage.ObjectStorageAgentServiceImpl"/>
+
+	<bean name="/remote/agent/objectstorage" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
+		<property name="service" ref="objectStorageAgentApi"/>
+		<property name="serviceInterface" value="org.opencloudengine.flamingo2.agent.objectstorage.ObjectStorageAgentService"/>
+	</bean>
+
 </beans>
