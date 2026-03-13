@@ -61,17 +61,17 @@
         <!--  Uengine BPMN  -->
         <!-- ============== -->
 
-<!--         <dependency> -->
-<!--             <groupId>org.uengine</groupId> -->
-<!--             <artifactId>bpmn-model</artifactId> -->
-<!--             <version>4.0-SNAPSHOT</version> -->
-<!--         </dependency> -->
+        <dependency>
+            <groupId>org.uengine</groupId>
+            <artifactId>bpmn-model</artifactId>
+            <version>4.0-SNAPSHOT</version>
+        </dependency>
 
-<!--         <dependency> -->
-<!--             <groupId>org.uengine</groupId> -->
-<!--             <artifactId>uengine-bpmn-modeler</artifactId> -->
-<!--             <version>4.1.0-RELEASE</version> -->
-<!--         </dependency> -->
+        <dependency>
+            <groupId>org.uengine</groupId>
+            <artifactId>uengine-bpmn-modeler</artifactId>
+            <version>4.1.0-RELEASE</version>
+        </dependency>
 
         <!-- ========= -->
         <!--  Ehcache  -->
@@ -750,6 +750,12 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.resource</groupId>
+            <artifactId>connector-api</artifactId>
+            <version>1.5</version>
         </dependency>
 
         <dependency>
