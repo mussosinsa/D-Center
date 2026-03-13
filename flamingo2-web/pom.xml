@@ -61,18 +61,6 @@
         <!--  Uengine BPMN  -->
         <!-- ============== -->
 
-        <dependency>
-            <groupId>org.uengine</groupId>
-            <artifactId>bpmn-model</artifactId>
-            <version>4.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.uengine</groupId>
-            <artifactId>uengine-bpmn-modeler</artifactId>
-            <version>4.1.0-RELEASE</version>
-        </dependency>
-
         <!-- ========= -->
         <!--  Ehcache  -->
         <!-- ========= -->
