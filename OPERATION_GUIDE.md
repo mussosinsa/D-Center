@@ -97,7 +97,40 @@ mvn -DskipTests package
 
 ---
 
-## 6) Tomcat 운영 권장값
+## 6) 스토리지 운영 모드 (Hadoop / Ceph / MinIO)
+
+Flamingo를 운영할 때 스토리지를 단일/복수로 선택 운영할 수 있습니다.
+
+- `storage.mode=hadoop`: HDFS만 사용
+- `storage.mode=object`: 오브젝트 스토리지만 사용(Ceph/MinIO)
+- `storage.mode=hybrid`: HDFS + 오브젝트 스토리지 병행
+
+`flamingo2-web/src/main/webapp/WEB-INF/config.properties` 권장 예시:
+
+```properties
+# 공통
+storage.mode=hybrid
+storage.hadoop.enabled=true
+storage.object.enabled=true
+
+# Object Storage
+storage.object.provider=minio        # 또는 ceph
+storage.object.endpoint=http://minio.example.com:9000
+storage.object.bucket=flamingo
+storage.object.access.key=***
+storage.object.secret.key=***
+storage.object.path.style.access=true
+storage.object.ssl.verify=true
+storage.object.timeout=30000
+```
+
+운영 권장사항:
+
+- Ceph RGW/MinIO는 TLS 및 접근키 로테이션 정책을 적용합니다.
+- `hybrid` 모드에서는 데이터 분류 정책(예: 대용량 원본=Object, 워크플로우 임시/메타=HDFS)을 명확히 문서화합니다.
+- 장애 전환 시나리오(예: Object 장애 시 HDFS fallback)를 사전 점검합니다.
+
+## 7) Tomcat 운영 권장값
 
 `setenv.sh` 예시:
 
@@ -113,7 +146,7 @@ export CATALINA_OPTS="-Xms2g -Xmx2g -XX:+UseG1GC -Dfile.encoding=UTF-8 -Duser.ti
 
 ---
 
-## 7) 로그/모니터링 운영
+## 8) 로그/모니터링 운영
 
 - 애플리케이션 로그, 접근 로그, 배치 로그를 분리 보관
 - 로그 롤링(일/용량 기준) 및 보존 기간 정책 설정
@@ -125,7 +158,7 @@ export CATALINA_OPTS="-Xms2g -Xmx2g -XX:+UseG1GC -Dfile.encoding=UTF-8 -Duser.ti
 
 ---
 
-## 8) 보안/권한 운영
+## 9) 보안/권한 운영
 
 - 실행 계정 최소 권한 원칙 적용
 - 설정 파일(`app.properties`, DB 계정 정보 등) 권한 640 이하 권장
@@ -134,22 +167,23 @@ export CATALINA_OPTS="-Xms2g -Xmx2g -XX:+UseG1GC -Dfile.encoding=UTF-8 -Duser.ti
 
 ---
 
-## 9) 장애 대응 체크리스트
+## 10) 장애 대응 체크리스트
 
 1. `java -version`으로 Java 11 여부 확인
 2. `JAVA_HOME` 및 서비스 유닛 환경 변수 확인
 3. Maven 저장소 접근 여부/미러 설정 확인
-4. DB/Hadoop/Hive 연결 설정 점검
+4. DB/Hadoop/Hive/Object Storage 연결 설정 점검
 5. 최근 배포 변경분(릴리즈 노트, 설정 diff) 확인
 
 ---
 
-## 10) 운영 전 최종 점검
+## 11) 운영 전 최종 점검
 
 - [ ] Java 11 고정
 - [ ] 운영/개발 환경 변수 일치
 - [ ] 빌드 산출물 해시/버전 추적 가능
 - [ ] 로그 롤링/보존 정책 적용
 - [ ] 백업/복구 절차 리허설 완료
+- [ ] 스토리지 모드(hadoop/object/hybrid) 적용값 검증
 - [ ] 서비스 재기동(systemd/Tomcat) 절차 문서화
 
