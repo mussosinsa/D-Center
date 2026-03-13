@@ -13,6 +13,16 @@ public class ProcessInstance {
         return values.get(key);
     }
 
+    public Object get(String key, Object defaultValue) {
+        if (key != null && values.containsKey(key)) {
+            return values.get(key);
+        }
+        if (defaultValue instanceof String && values.containsKey(defaultValue)) {
+            return values.get(defaultValue);
+        }
+        return defaultValue;
+    }
+
     public void set(String key, Object value) {
         values.put(key, value);
     }

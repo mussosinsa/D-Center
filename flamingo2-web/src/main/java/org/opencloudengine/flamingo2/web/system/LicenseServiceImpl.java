@@ -70,11 +70,13 @@ public class LicenseServiceImpl implements LicenseService, InitializingBean {
     @Override
     public Map getLicenseInfo() {
         //return LicenseUtil.getLicenseInfo(licenseFilename);
+        return java.util.Collections.emptyMap();
     }
 
     @Override
     public boolean isValid(String filename) {
         //return LicenseUtil.isValid(filename);
+        return false;
     }
 
     @Override
@@ -91,11 +93,13 @@ public class LicenseServiceImpl implements LicenseService, InitializingBean {
     @Override
     public String getServerId() {
         //return LicenseUtil.getServerId();
+        return "";
     }
 
     @Override
     public String getMaxNode(String filename) {
         //return LicenseUtil.getMaxNode(filename);
+        return "";
     }
 
     @Override
