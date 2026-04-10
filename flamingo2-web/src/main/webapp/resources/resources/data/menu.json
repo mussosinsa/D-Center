@@ -98,11 +98,12 @@
 		"prnts_menu_id": "TOP",
 		"id": "MN002",
 		"menu_id": "MN002",
-		"text": "대쉬보드",
-		"menu_nm": "대쉬보드",
+		"text": "대시보드",
+		"menu_nm": "대시보드",
 		"icon_css_nm": "fa-pie-chart",
 		"lvl": 0,
 		"sort": 0,
+		"menu_ns": "dashboard.DataCenterDashboard",
 		"leaf": true
 	},
 	{
