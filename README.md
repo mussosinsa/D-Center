@@ -18,9 +18,13 @@ Flamingo is a Big Data platform based on Apache Hadoop Ecosystem. It provides a 
 * Community License : GPL v3 (A license from the GPL v3 is being changed to the Apache License)
 
 
+### 운영 가이드
+
+- [실무 서비스 운영 설정 가이드 (Java 11)](OPERATION_GUIDE.md)
+
 ### System Requirement
 
-* JDK 1.7 or higher
+* JDK 11 or higher
 * Apache Tomcat 7 or higher
 * Apache Hadoop 2.0 or higher
 * Apache Hive 0.13 or higher

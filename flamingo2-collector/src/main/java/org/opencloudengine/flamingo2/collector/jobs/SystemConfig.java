@@ -51,6 +51,15 @@ public class SystemConfig implements Serializable {
     public String hiveMetastoreAddress;
     public int hiveMetastorePort;
 
+    public String objectAgentAddress;
+    public int objectAgentPort;
+
+    public boolean objectStorageEnabled;
+    public String objectStorageProvider;
+    public String objectStorageEndpoint;
+    public String objectStorageBucket;
+    public int objectStorageTimeout;
+
     public String getHistoryServerUrl() {
         return hsAddress + ":" + hsPort;
     }
@@ -198,4 +207,61 @@ public class SystemConfig implements Serializable {
     public void setWebPort(int webPort) {
         this.webPort = webPort;
     }
+
+    public String getObjectAgentAddress() {
+        return objectAgentAddress;
+    }
+
+    public void setObjectAgentAddress(String objectAgentAddress) {
+        this.objectAgentAddress = objectAgentAddress;
+    }
+
+    public int getObjectAgentPort() {
+        return objectAgentPort;
+    }
+
+    public void setObjectAgentPort(int objectAgentPort) {
+        this.objectAgentPort = objectAgentPort;
+    }
+
+    public boolean isObjectStorageEnabled() {
+        return objectStorageEnabled;
+    }
+
+    public void setObjectStorageEnabled(boolean objectStorageEnabled) {
+        this.objectStorageEnabled = objectStorageEnabled;
+    }
+
+    public String getObjectStorageProvider() {
+        return objectStorageProvider;
+    }
+
+    public void setObjectStorageProvider(String objectStorageProvider) {
+        this.objectStorageProvider = objectStorageProvider;
+    }
+
+    public String getObjectStorageEndpoint() {
+        return objectStorageEndpoint;
+    }
+
+    public void setObjectStorageEndpoint(String objectStorageEndpoint) {
+        this.objectStorageEndpoint = objectStorageEndpoint;
+    }
+
+    public String getObjectStorageBucket() {
+        return objectStorageBucket;
+    }
+
+    public void setObjectStorageBucket(String objectStorageBucket) {
+        this.objectStorageBucket = objectStorageBucket;
+    }
+
+    public int getObjectStorageTimeout() {
+        return objectStorageTimeout;
+    }
+
+    public void setObjectStorageTimeout(int objectStorageTimeout) {
+        this.objectStorageTimeout = objectStorageTimeout;
+    }
+
 }
